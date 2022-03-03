@@ -39,10 +39,17 @@ export class CadastrarComponent implements OnInit {
     if (this.usuario.senha != this.confirmarSenha) {
       alert("A senhas estão incorretas!");
     } else {
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
-        this.usuario = resp;
-        this.router.navigate(["/entrar"])
-        alert("Usuário cadastrado com sucesso!")
+      this.authService.cadastrar(this.usuario).subscribe({
+        next: (resp: Usuario) => {
+          this.usuario = resp;
+          this.router.navigate(["/entrar"])
+          alert("Usuário cadastrado com sucesso!")
+        },
+        error: erro => {
+          if(erro.status == 400){
+            alert("Email já existente!")
+          }
+        }
       });
     }
   }

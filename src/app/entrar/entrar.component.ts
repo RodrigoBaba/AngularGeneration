@@ -19,7 +19,7 @@ export class EntrarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0);
+    window.scroll(0,0);   
   }
 
 
@@ -33,6 +33,8 @@ export class EntrarComponent implements OnInit {
         environment.id = this.usuarioLogin.id;
         environment.token = this.usuarioLogin.token;
         environment.tipo = this.usuarioLogin.tipo;
+
+        console.log(environment)
 
         this.router.navigate(["/inicio"])
       },
