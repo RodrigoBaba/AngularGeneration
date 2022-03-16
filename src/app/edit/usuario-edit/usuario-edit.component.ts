@@ -17,7 +17,7 @@ export class UsuarioEditComponent implements OnInit {
   tipoUser: string
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
